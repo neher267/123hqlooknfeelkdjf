@@ -11,7 +11,6 @@
 					<li><a href="#"><i class="facebok"> </i></a></li>
 					<li><a href="#"><i class="twiter"> </i></a></li>
 					<li><a href="#"><i class="goog"> </i></a></li>
-					<li><a href="#"><i class="be"> </i></a></li>
 					<div class="clearfix"></div>	
 				</ul>
 			</div>
@@ -48,7 +47,7 @@
 		<h4>ABOUT US</h4>
 		<li><a href="products.html">Our Stories</a></li>
 		<li><a href="products.html">Press</a></li>
-		<li><a href="faq.html">Career</a></li>
+		<li><a href="#">Career</a></li>
 		<li><a href="contact.html">Contact</a></li>
 	</div>
 	<div class="col-md-2 myac">
@@ -67,5 +66,5 @@
 		<li><a href="mailto:info@example.com"><i class="mail"> </i>info@sitename.com </a></li>
 	</div>
 	<div class="clearfix"></div>
-	<p>© 2016 Gretong. All Rights Reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+	<p>© 2018 LooknFeel. All Rights Reserved | Developed by <a href="#">NS Group Ltd.</a></p>
 </div>

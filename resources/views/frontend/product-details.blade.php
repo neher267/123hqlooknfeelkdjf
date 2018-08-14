@@ -24,7 +24,7 @@
 
                     <div class="flex-viewport" style="overflow: hidden; position: relative;">
                         <ul class="slides" style="width: 1200%; transition-duration: 0.6s; transform: translate3d(-864px, 0px, 0px);">
-                        	@foreach($images as $image)
+                        	@foreach($product->images as $image)
                             <li data-thumb="{{asset($image->src)}}" style="width: 288px; float: left; display: block;" class="">
                                 <div class="thumb-image"> 
                                 	<img src="{{asset($image->src)}}" data-imagezoom="true" class="img-responsive" draggable="false"> 
@@ -37,13 +37,13 @@
             </div>
 
             <div class="desc1 span_3_of_2">
-                <h3>{{$package->title}}</h3>
+                <h3>{{$product->title}}</h3>
                 <br>
                 <div class="price">
                 	<p>
                      <div>
-                         <?php 
-                        $text = $package->description;
+                        <?php 
+                        $text = $product->description;
                         if (str_word_count($text, 0) > 50) {
                             $words = str_word_count($text, 2);
                             $pos = array_keys($words);
@@ -76,23 +76,23 @@
         </div>
 
         <div class="single-bottom2">
-            <h6>Popular Packages</h6>
+            <h6>Popular products</h6>
             <!-- grids_of_4 -->
-                @foreach($popular_packages as $package_chunked)
+                @foreach($popular_products as $product_chunked)
                 <div class="grids_of_4">
-                    @foreach($package_chunked as $package)
+                    @foreach($product_chunked as $product)
                     <div class="grid1_of_4">
                         <div class="content_box">
                             <?php 
-                                $title = str_replace(' ', '-', $package->title);
+                                $title = str_replace(' ', '-', $product->title);
                             ?>
-                            <a href="{{url($title.'/'.$package->slug)}}">
-                                <img src="{{asset($package->thumbnail)}}" class="img-responsive" style="width: 100%">
+                            <a href="{{url($title.'/'.$product->slug)}}">
+                                <img src="{{asset($product->thumbnail)}}" class="img-responsive" style="width: 100%">
                             </a>
                             <div class="grid_1 simpleCart_shelfItem">
-                                <a class="item_add" href="{{url($title.'/'.$package->slug)}}">
+                                <a class="item_add" href="{{url($title.'/'.$product->slug)}}">
                                     <div><i class="fas fa-search-plus"></i></div>
-                                    <div>{{$package->title}}</div>
+                                    <div>{{$product->title}}</div>
                                     <div>100 TK</div>
                                 </a>
                                 <div class="item_add">

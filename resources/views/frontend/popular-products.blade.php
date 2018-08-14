@@ -4,7 +4,7 @@
 <!-- start content -->
 <div class="w_content">
     <div class="women">
-        <a href="#"><h4>Packages - <span>{{$popular_packages->count()}} items</span> </h4></a>
+        <a href="#"><h4>products - <span>{{$popular_products->count()}} items</span> </h4></a>
         <ul class="w_nav">
             <li>Sort : </li>
             <li><a class="active" href="#">popular</a></li> |
@@ -17,21 +17,21 @@
     </div>
 
     <!-- grids_of_4 -->
-    @foreach($popular_packages as $package_chunked)
+    @foreach($popular_products as $product_chunked)
     <div class="grids_of_4">
-        @foreach($package_chunked as $package)
+        @foreach($product_chunked as $product)
         <div class="grid1_of_4">
             <div class="content_box">
                 <?php 
-                    $title = str_replace(' ', '-', $package->title);
+                    $title = str_replace(' ', '-', $product->title);
                 ?>
-                <a href="{{url($title.'/'.$package->slug)}}">
-                    <img src="{{asset($package->thumbnail)}}" class="img-responsive" style="width: 100%">
+                <a href="{{url($title.'/'.$product->slug)}}">
+                    <img src="{{asset($product->thumbnail)}}" class="img-responsive" style="width: 100%">
                 </a>
                 <div class="grid_1 simpleCart_shelfItem">
-                    <a class="item_add" href="{{url($title.'/'.$package->slug)}}">
+                    <a class="item_add" href="{{url($title.'/'.$product->slug)}}">
                         <div><i class="fas fa-search-plus"></i></div>
-                        <div>{{$package->title}}</div>
+                        <div>{{$product->title}}</div>
                         <div>100 TK</div>
                     </a>
                     <div class="item_add">

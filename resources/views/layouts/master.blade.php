@@ -47,6 +47,9 @@
 				@include('layouts.partials._top-bg')		
 				<!-- /top_bg -->
 			</div>
+			<div class="header_bg">			
+				@include('layouts.partials._header-bg')						
+			</div>
 			@role('customer')
 			<div class="header_bg">			
 				@include('layouts.partials._header-bg')						
@@ -58,6 +61,8 @@
 			<div class="content">
 				<div class="women_main">
 					@yield('content')
+
+					@include('layouts.partials._footer')
 					@role('customer')
 						@include('layouts.partials._footer')
 					@endrole	
@@ -103,6 +108,7 @@ function alertUser($message)
 }	
 </script>
 <!-- end js Neher -->
+
 
 <script>
 	var toggle = true;
@@ -318,6 +324,28 @@ $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 		prettyPrint();
 	});
 </script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#search_text').keyup(function(){	    	
+	    	axios.post('http://123hqlooknfeelkdjf.test/testdd', {
+			    firstName: 'Fred',
+			    lastName: 'Flintstone'
+			})
+			.then(function (response) {
+			    console.log(response);
+			})
+			.catch(function (error) {
+			    console.log(error);
+			});
+	    });
+	});
+</script>
+
 <script src="{{asset('js/menu_jquery.js')}}"></script>
 </body>
 </html>

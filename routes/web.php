@@ -8,13 +8,17 @@
 */
 
 Route::get('/', 'PublicController@index');
+Route::post('testdd', 'PublicController@testdd');
 Route::get('contact-us', 'PublicController@contact_us');
 Route::get('about-us', 'PublicController@about_us');
-Route::get('/{category}/types','PublicController@category_types');
-Route::get('{product}/packages', 'PublicController@product_packages');
-Route::get('details','PublicController@details');
-Route::get('popular-packages','PublicController@popular_packages');
-
+Route::get('/{category}/products','PublicController@category_products');
+Route::get('{product}/details', 'PublicController@product_details')->name('product.details');
+Route::get('popular','PublicController@popular_products');
+Route::get('{category}/popular','PublicController@category_popular_products')->name('category.popular.products');
+Route::get('{category}/new','PublicController@category_new_products')->name('category.new.products');
+Route::get('{category}/discunt','PublicController@category_discunt_products')->name('category.discunt.products');
+Route::get('{category}/low-price','PublicController@category_low_price_products')->name('category.low-price.products');
+Route::get('{category}/high-price','PublicController@category_high_price_products')->name('category.high-price.products');
 Route::get('language/{locale}', 'PublicController@language_change');
 
 Route::post('logout', 'Auth\SentinelLoginController@logout')->middleware('sentinel.auth');
@@ -101,8 +105,6 @@ Route::group(['namespace'=>'Hr', 'middleware'=>['sentinel.auth']], function(){
 	Route::DELETE('products/{product_id}/images/{image_id}', 'ProductImageController@destroy')->name('product.images.destroy');
 	//end product image		
 });
-
-Route::get('{title}/{package}', 'PublicController@package_details');
 
 
 
