@@ -21,6 +21,12 @@ Route::get('{category}/low-price','PublicController@category_low_price_products'
 Route::get('{category}/high-price','PublicController@category_high_price_products')->name('category.high-price.products');
 Route::get('language/{locale}', 'PublicController@language_change');
 
+
+// cart 
+Route::post('cart/{product}/add', 'CartController@add')->name('cart.add');
+
+//end cart
+
 Route::post('logout', 'Auth\SentinelLoginController@logout')->middleware('sentinel.auth');
 
 

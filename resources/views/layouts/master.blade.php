@@ -49,6 +49,7 @@
 			</div>
 			<div class="header_bg">			
 				@include('layouts.partials._header-bg')						
+				@include('frontend.cart')						
 			</div>
 			@role('customer')
 			<div class="header_bg">			
@@ -344,6 +345,18 @@ $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 			});
 	    });
 	});
+</script>
+
+<script type="text/javascript">
+	function opencart()
+	{
+		document.getElementById("cart_details").style.visibility = "visible";
+	}
+
+	function closecart()
+	{
+		document.getElementById("cart_details").style.visibility = "collapse";
+	}
 </script>
 
 <script src="{{asset('js/menu_jquery.js')}}"></script>

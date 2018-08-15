@@ -39,13 +39,15 @@
                             <strike style="color: red;">{{$product->old_price == '' ? "":"$product->old_price ৳"}}</strike>
                         </div>
                     </a>
-                    <div class="item_add">
+                    <form method="post" action="{{route('cart.add', $product)}}">
+                        {{ csrf_field() }}
+                        
+                        <div class="item_add">
                         <span class="item_price">
-                            <a href="#" style="border-radius: 45%">
-                                <i class="fas fa-cart-plus"></i> Add to Cart
-                            </a>
+                            <button class="btn btn-success" type="submit" style="border-radius: 45%;"><i class="fas fa-cart-plus"></i> Add to Cart</button>                            
                         </span>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

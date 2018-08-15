@@ -49,10 +49,12 @@ class ProductController extends Controller
 
         $product = new Product;
         $product->name = $name;
-        $product->slug = strtolower(str_replace(' ', '-', $name));
+        // $product->slug = strtolower(str_replace(' ', '-', $name));
+        $product->slug = str_slug($name, '-');       
 
         $product->category()->associate($request->category_id);
         $product->unit = $request->unit;
+        $product->price = $request->price;
         $product->for_sale = true;
         $product->thumbnail = $this->path.'/'.$imageName; 
         $product->save();
@@ -100,6 +102,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $product->name = trim(preg_replace('/\s\s+/', ' ', $request->name));
+        $product->price = $request->price;
         $product->category()->associate($request->category_id);
         $product->unit = $request->unit;
         $product->for_sale = true;
