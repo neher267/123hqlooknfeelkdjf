@@ -24,6 +24,9 @@ Route::get('language/{locale}', 'PublicController@language_change');
 
 // cart 
 Route::post('cart/{product}/add', 'CartController@add')->name('cart.add');
+Route::post('increate-qty', 'CartController@increate_qty');
+Route::post('decrease-qty', 'CartController@decrease_qty');
+Route::post('remove-item', 'CartController@remove_item');
 
 //end cart
 

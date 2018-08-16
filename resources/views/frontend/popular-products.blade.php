@@ -22,25 +22,27 @@
         @foreach($product_chunked as $product)
         <div class="grid1_of_4">
             <div class="content_box">
-                <?php 
-                    $title = str_replace(' ', '-', $product->title);
-                ?>
-                <a href="{{url($title.'/'.$product->slug)}}">
-                    <img src="{{asset($product->thumbnail)}}" class="img-responsive" style="width: 100%">
+                <a href="{{route('product.details', $product)}}">
+                    <img src="{{asset($product->thumbnail)}}" class="img-responsive" style="width: 100%; height: 275px;">
                 </a>
                 <div class="grid_1 simpleCart_shelfItem">
-                    <a class="item_add" href="{{url($title.'/'.$product->slug)}}">
+                    <a class="item_add" href="{{route('product.details', $product)}}">
                         <div><i class="fas fa-search-plus"></i></div>
-                        <div>{{$product->title}}</div>
-                        <div>100 TK</div>
+                        <div style="height: 40px; overflow: hidden;">{{$product->name}}</div>
+                        <div>
+                            {{$product->price}} ৳ 
+                            <strike style="color: red;">{{$product->old_price == '' ? "":"$product->old_price ৳"}}</strike>
+                        </div>
                     </a>
-                    <div class="item_add">
+                    <form method="post" action="{{route('cart.add', $product)}}">
+                        {{ csrf_field() }}
+                        
+                        <div class="item_add">
                         <span class="item_price">
-                            <a href="#" style="border-radius: 45%">
-                                <i class="fas fa-cart-plus"></i> Add to Cart
-                            </a>
+                            <button class="btn btn-success" type="submit" style="border-radius: 45%;"><i class="fas fa-cart-plus"></i> Add to Cart</button>                            
                         </span>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

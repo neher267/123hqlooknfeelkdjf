@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="{{config('app.keywords')}}" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Bootstrap Core CSS -->
 <link href="{{asset('css/bootstrap.min.css')}}" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 <!-- Custom CSS -->
 <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css' />
+<link href="{{asset('css/custom.css')}}" rel='stylesheet' type='text/css' />
 <!-- Neher -->
 <style type="text/css">
 	.green-btn{
@@ -27,12 +27,14 @@
 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <!-- lined-icons -->
 <link rel="stylesheet" href="{{asset('css/icon-font.min.css')}}" type='text/css' />
+<script src="{{asset('js/jquery-1.10.2.min.js')}}"></script>
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="{{asset('js/simpleCart.min.js')}}"> </script>
 <script src="{{asset('js/amcharts.js')}}"></script>	
 <script src="{{asset('js/serial.js')}}"></script>
 <script src="{{asset('js/light.js')}}"></script>
 <!-- //lined-icons -->
-<script src="{{asset('js/jquery-1.10.2.min.js')}}"></script>
 <script src="{{asset('vendor/ckeditor/ckeditor.js')}}"></script>
 </head> 
 
@@ -97,8 +99,10 @@
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-	    $('.datatable').DataTable();
-	    $('.flash').delay(7000).fadeOut(1000);
+
+	    /*$('.datatable').DataTable();
+	    $('.flash').delay(7000).fadeOut(1000);*/
+
 	} );
 </script>
 
@@ -132,51 +136,51 @@ function alertUser($message)
 	});
 </script>
 <script type="text/javascript">
-$(function() {
-	// We use an inline data source in the example, usually data would
-	// be fetched from a server
+// $(function() {
+// 	// We use an inline data source in the example, usually data would
+// 	// be fetched from a server
 
-	var data = [],
-	totalPoints = 300;
-	function getRandomData() {
-		if (data.length > 0)
-			data = data.slice(1);
-		// Do a random walk
-		while (data.length < totalPoints) {
-			var prev = data.length > 0 ? data[data.length - 1] : 50,
-				y = prev + Math.random() * 10 - 5;
-			if (y < 0) {
-				y = 0;
-			} else if (y > 100) {
-				y = 100;
-			}
-			data.push(y);
-		}
-		// Zip the generated y values with the x values
-		var res = [];
-		for (var i = 0; i < data.length; ++i) {
-			res.push([i, data[i]])
-		}
-		return res;
-	}
+// 	var data = [],
+// 	totalPoints = 300;
+// 	function getRandomData() {
+// 		if (data.length > 0)
+// 			data = data.slice(1);
+// 		// Do a random walk
+// 		while (data.length < totalPoints) {
+// 			var prev = data.length > 0 ? data[data.length - 1] : 50,
+// 				y = prev + Math.random() * 10 - 5;
+// 			if (y < 0) {
+// 				y = 0;
+// 			} else if (y > 100) {
+// 				y = 100;
+// 			}
+// 			data.push(y);
+// 		}
+// 		// Zip the generated y values with the x values
+// 		var res = [];
+// 		for (var i = 0; i < data.length; ++i) {
+// 			res.push([i, data[i]])
+// 		}
+// 		return res;
+// 	}
 
-// Set up the control widget
+// // Set up the control widget
 
-var updateInterval = 30;
-$("#updateInterval").val(updateInterval).change(function () {
-	var v = $(this).val();
-	if (v && !isNaN(+v)) {
-		updateInterval = +v;
-		if (updateInterval < 1) {
-			updateInterval = 1;
-		} else if (updateInterval > 2000) {
-			updateInterval = 2000;
-		}
-		$(this).val("" + updateInterval);
-	}
-});
+// var updateInterval = 30;
+// $("#updateInterval").val(updateInterval).change(function () {
+// 	var v = $(this).val();
+// 	if (v && !isNaN(+v)) {
+// 		updateInterval = +v;
+// 		if (updateInterval < 1) {
+// 			updateInterval = 1;
+// 		} else if (updateInterval > 2000) {
+// 			updateInterval = 2000;
+// 		}
+// 		$(this).val("" + updateInterval);
+// 	}
+// });
 
-var plot = $.plot("#placeholder", [ getRandomData() ], {
+/*var plot = $.plot("#placeholder", [ getRandomData() ], {
 	series: {
 		shadowSize: 0	// Drawing is faster without shadows
 	},
@@ -187,9 +191,9 @@ var plot = $.plot("#placeholder", [ getRandomData() ], {
 	xaxis: {
 		show: false
 	}
-});
+});*/
 
-function update() {
+/*function update() {
 
 	plot.setData([getRandomData()]);
 
@@ -197,19 +201,16 @@ function update() {
 
 	plot.draw();
 	setTimeout(update, updateInterval);
-}
-
-update();
+}*/
 
 // Add the Flot version string to the footer
 
-$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
-});
+// $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
+// });
 
 </script>
-<!-- /real-time -->
-<script src="js/jquery.fn.gantt.js"></script>
-<script>
+
+<!-- <script>
 	$(function() {
 
 		"use strict";
@@ -324,7 +325,7 @@ $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 
 		prettyPrint();
 	});
-</script>
+</script> -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
@@ -344,7 +345,9 @@ $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 			    console.log(error);
 			});
 	    });
+
 	});
+
 </script>
 
 <script type="text/javascript">
@@ -357,6 +360,46 @@ $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 	{
 		document.getElementById("cart_details").style.visibility = "collapse";
 	}
+
+	function increase_qty(rowid){
+		axios.post('http://123hqlooknfeelkdjf.test/increate-qty', {
+			    rowid: rowid,
+			})
+			.then(function (response) {
+				document.getElementById(rowid).innerHTML = response.data.qty;
+				document.getElementById(rowid+'price').innerHTML = response.data.price;
+			})
+			.catch(function (error) {
+			    console.log(error);
+		});
+    }
+
+    function decrease_qty(rowid){
+		axios.post('http://123hqlooknfeelkdjf.test/decrease-qty', {
+			    rowid: rowid,
+			})
+			.then(function (response) {
+				document.getElementById(rowid).innerHTML = response.data.qty;
+				document.getElementById(rowid+'price').innerHTML = response.data.price;
+			})
+			.catch(function (error) {
+			    console.log(error);
+		});
+    }
+
+    function remove_item(rowid){
+		axios.post('http://123hqlooknfeelkdjf.test/remove-item', {
+			    rowid: rowid,
+			})
+			.then(function (response) {
+				document.getElementById('items').innerHTML = response.data.count;
+				document.getElementById(rowid+'1').style.visibility = "collapse";
+			})
+			.catch(function (error) {
+			    console.log(error);
+		});
+    }
+
 </script>
 
 <script src="{{asset('js/menu_jquery.js')}}"></script>

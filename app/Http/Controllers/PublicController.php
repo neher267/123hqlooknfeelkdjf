@@ -19,7 +19,7 @@ class PublicController extends Controller
 
     public function testdd(Request $request)
     {
-        return ['neher', 'shreshtha'];
+        return $request->rowid;
     }
 
     public function language_change($locale)
