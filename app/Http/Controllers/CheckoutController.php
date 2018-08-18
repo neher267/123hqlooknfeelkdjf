@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware('customer');
+	}
+	
     public function index()
     {
     	return view('frontend.checkout');

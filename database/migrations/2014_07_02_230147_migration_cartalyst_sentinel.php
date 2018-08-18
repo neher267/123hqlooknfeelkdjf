@@ -98,9 +98,8 @@ class MigrationCartalystSentinel extends Migration
             $table->increments('id');
             $table->integer('branch_id')->unsigned()->nullable();
             $table->string('mobile');            
-            $table->string('name');
-            $table->decimal('points',6,0)->default(0);
-            $table->string('password');
+            $table->string('name')->nullable();
+            $table->string('password')->nullable();
             $table->text('permissions')->nullable();
             $table->timestamp('last_login')->nullable();            
             $table->timestamps();            

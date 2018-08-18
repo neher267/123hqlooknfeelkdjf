@@ -28,6 +28,8 @@ Route::post('increate-qty', 'CartController@increate_qty');
 Route::post('decrease-qty', 'CartController@decrease_qty');
 Route::post('remove-item', 'CartController@remove_item');
 
+Route::resource('checkout','CheckoutController');
+
 //end cart
 
 Route::post('logout', 'Auth\SentinelLoginController@logout')->middleware('sentinel.auth');
@@ -36,6 +38,8 @@ Route::post('logout', 'Auth\SentinelLoginController@logout')->middleware('sentin
 Route::group(['namespace'=>'Auth', 'middleware'=>['guest']], function(){
 	Route::post('login','SentinelLoginController@post_login');
 	Route::get('login','SentinelLoginController@login');
+	Route::get('account','AccountController@account');
+	Route::post('account','AccountController@post_account');
 });
 
 Route::group(['middleware'=>['sentinel.auth']], function(){
@@ -44,7 +48,7 @@ Route::group(['middleware'=>['sentinel.auth']], function(){
 });
 
 Route::group(['middleware'=>['sentinel.auth', 'customer']], function(){
-	Route::resource('checkout','CheckoutController');
+	//
 });
 
 Route::group(['namespace'=>'Auth', 'middleware'=>['sentinel.auth']], function(){

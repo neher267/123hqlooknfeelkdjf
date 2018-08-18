@@ -49,7 +49,7 @@
 		@endif
 	</div>
 	<div class="cart-footer">
-		<button class="btn btn-info">Place order</button>
+		<a href="{{url('checkout')}}" class="btn btn-info">Place order</a>
 		
 		৳ {{Cart::subtotal()}}
 

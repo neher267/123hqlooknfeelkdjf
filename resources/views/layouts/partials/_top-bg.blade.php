@@ -21,7 +21,7 @@
 					@else 
 					<a href="{{url('language/en')}}"  style="color: white; font-size: 14px; display: inline;">English</a>
 					@endif
-					<a href="{{url('login')}}"  style="color: white; font-size: 14px; display: inline;">@lang('customer.login')</a>
+					<a href="{{url('account')}}"  style="color: white; font-size: 14px; display: inline;">@lang('customer.login')</a>
 				</li>
 
 				@else
