@@ -46,10 +46,11 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        
         $user = Sentinel::getUser();
         $order = new Order;
         $order->user()->associate($user);
-        $order->amount = (int)Cart::subtotal();        
+        $order->amount = (int)str_replace(',', '', Cart::subtotal());        
         $order->shipping_addresse_id = $this->getShipingAddress($user)->id;
         $order->save();
 

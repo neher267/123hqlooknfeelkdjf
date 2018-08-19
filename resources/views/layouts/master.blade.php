@@ -51,7 +51,12 @@
 			</div>
 			<div class="header_bg">	
 				@include('frontend.cart')			
-				@include('layouts.partials._header-bg')						
+				@include('layouts.partials._header-bg')	
+				@if(session()->has('success'))
+			    <div class="alert alert-success flash" style="margin-top: 20px; padding-left: 15px">
+			        {{ session()->get('success') }}
+			    </div>
+			@endif					
 			</div>
 			<!-- //header-ends -->
 					
@@ -94,8 +99,8 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-	    /*$('.datatable').DataTable();
-	    $('.flash').delay(7000).fadeOut(1000);*/
+	    $('.datatable').DataTable();
+	    $('.flash').delay(7000).fadeOut(1000);
 
 	} );
 </script>

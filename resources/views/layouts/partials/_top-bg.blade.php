@@ -28,7 +28,7 @@
 				@if(App::isLocale('en'))							
 				<li><a href="{{url('language/bn')}}"  style="color: white; font-size: 14px; display: inline;">Bangla</a></li>
 				@else 
-				<li><a href="{{url('language/en')}}{{url('language/en')}}"  style="color: white; font-size: 14px; display: inline;">English</a></li>
+				<li><a href="{{url('language/en')}}"  style="color: white; font-size: 14px; display: inline;">English</a></li>
 				@endif
 				<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" style="color: white; font-size: 14px">
