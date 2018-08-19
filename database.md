@@ -1,6 +1,3 @@
-Branch:
-id 	name 	 address_id
-
 
 department:
 id 	branch_id(nullable) 	name 		slug
@@ -30,18 +27,6 @@ id 	imageable_id 	imageable_type 	type 		status  	src
 2 	1 				product 		profile 		1
 2 	1 				branch 			profile 		1
 
-mix_packages:
-id 	name			branch_id
-1 	chal+egg+tel-one	
-1 	chal+egg+tel-two	
-1 	chal+egg+tel+gur	
-
-packages:
-id 	packageable_id 	packgeable_type 	title 				description
-1	1			mix 			For you mom!			5 kg chal. 10 pcs dim. 2L oil.
-2	1			mix 			For you mom!			10 kg chal. 10 pcs dim. 2L oil.
-3	1			product 		Bachelor Jindabat!		25pcs layer egges.
-
 
 prices:
 id 	priceable_id 		priceable_type 	price(unit)
@@ -59,11 +44,6 @@ id	branch_id	product_id 	reason  	quantity
 1	1		1		broken		20
 
 
-gifts:
-id 	name		points
-1 	pen			2
-2 	box			4
-3 	ball		4
 
 users:
 id 	branch_id 	mobile 		name 		points
@@ -72,11 +52,14 @@ id 	branch_id 	mobile 		name 		points
 addresses:
 id   addressable_id      addressable_type 	area_id      block      road_no      house_no        house_name   	floor
 
+shipping_addresses:
+id 		user_id 	address_id 
+
 orders:
-id 	user_id 	discount 	
+id 	user_id  	order_detail_id 	shipping_address_id 	amount
 
 order_details:
-id  	order_id 	orderable_id 		orderable_type 	 qty 	price 	
+id  	order_id 	product_id 	 qty 	color 	size
 
 roles:
 chairman
@@ -148,5 +131,8 @@ id 	user_id 	title 		amount 	 fine 	short_description  date 			approve_by
 
 transactions:
 id transactionable_id	transactionable_type 	transaction_type(debit||credit) 	amount	date 	created_at 	updated_at 
+
+
+
 
 							

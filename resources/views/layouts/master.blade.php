@@ -49,15 +49,10 @@
 				@include('layouts.partials._top-bg')		
 				<!-- /top_bg -->
 			</div>
-			<div class="header_bg">			
-				@include('layouts.partials._header-bg')						
-				@include('frontend.cart')						
-			</div>
-			@role('customer')
-			<div class="header_bg">			
+			<div class="header_bg">	
+				@include('frontend.cart')			
 				@include('layouts.partials._header-bg')						
 			</div>
-			@endrole
 			<!-- //header-ends -->
 					
 			<!--content-->
@@ -65,7 +60,6 @@
 				<div class="women_main">
 					@yield('content')
 
-					@include('layouts.partials._footer')
 					@role('customer')
 						@include('layouts.partials._footer')
 					@endrole	

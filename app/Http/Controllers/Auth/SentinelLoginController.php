@@ -17,6 +17,7 @@ class SentinelLoginController extends Controller
     public function post_login(Request $request)
     {
         Sentinel::authenticate($request->all());
+        
     	if(Sentinel::check())
     	{
             return redirect('/');

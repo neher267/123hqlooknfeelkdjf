@@ -347,7 +347,7 @@ li#menu-academico{
 	
 }
 .cart-item img{
-	width:100%;
+	height: 155px;
 }
 .cart-item-info{
 	width:75%;
@@ -442,13 +442,12 @@ a.order:hover{
 	font-weight:600;
 	color:#9C9C9C;
 	display:inline-block;
-	margin-right:6em;
 }
 a.cpns{
 	background:#B52E31;
 	color:#fff;
 	
-	padding: 10px;
+	padding: 3px 5px;
   font-size: 0.8em;
 	font-weight:600;
 }
@@ -512,9 +511,9 @@ ul.total_price li.last_price span{
   line-height: 1.8em;
 }
 .cart-items h1 {
-    font-size: 1.5em;
-    margin-bottom: 2em;
-    color: #B52E31;
+  font-size: 1.5em;
+  margin: 0px 0px 15px 15px;
+  color: #B52E31;
 }
 a.item_add1 {
   border-top-left-radius: 0;

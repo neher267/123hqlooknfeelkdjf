@@ -29,8 +29,7 @@ Route::post('decrease-qty', 'CartController@decrease_qty');
 Route::post('remove-item', 'CartController@remove_item');
 
 Route::resource('checkout','CheckoutController');
-
-//end cart
+Route::resource('place-order','OrderController');
 
 Route::post('logout', 'Auth\SentinelLoginController@logout')->middleware('sentinel.auth');
 

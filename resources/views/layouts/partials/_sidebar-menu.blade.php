@@ -45,7 +45,7 @@
 		<li id="menu-academico-avaliacoes" ><a href="{{url('my-expenses')}}">Expense</a></li>		   	
 		@endrole
 
-		@guest
+		<!-- all time this menue will show -->
 		<li><a href="{{url('popular')}}"><i class="fa fa-fire" aria-hidden="true"></i><span>@lang('customer.popular')</span></a></li>	
 
 		@foreach($all_departments as $department)
@@ -57,8 +57,5 @@
 			</ul>
 		 </li>
 		@endforeach
-
-
-		@endguest
 	</ul>
 </div>

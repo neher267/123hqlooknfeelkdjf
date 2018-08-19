@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Sentinel;
+use App\Models\Customer\ShippingAddress;
+use App\Models\Customer\Order;
+use App\Models\Customer\OrderDetail;
+use App\Address;
+use Cart;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('customer');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +34,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $shippingAddress = Sentinel::getUser()->shippingAddress()->first();
+        return view('frontend.place-order', compact('shippingAddress'));
     }
 
     /**
@@ -34,7 +46,45 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Sentinel::getUser();
+        $order = new Order;
+        $order->user()->associate($user);
+        $order->amount = (int)Cart::subtotal();        
+        $order->shipping_addresse_id = $this->getShipingAddress($user)->id;
+        $order->save();
+
+        $this->saveOrderDetails($order);
+        return redirect('/')->withSuccess('Thank you for your order! We will contact you soon');
+    }
+
+
+    private function getShipingAddress($user)
+    {
+        if($shippingAddress = $user->shippingAddress()->first()){
+
+        } else {
+            $shippingAddress = new ShippingAddress;  
+            $shippingAddress->user()->associate($user)->save();                  
+        } 
+        $address = new Address;
+        $address->block = "B";
+        $shippingAddress->addresses()->save($address);  
+        return $address;     
+    }
+
+    public function saveOrderDetails($order)
+    {
+        foreach (Cart::content() as $content) {
+            $details = new OrderDetail;
+            $details->product_id = $content->id;
+            $details->qty = $content->qty;
+            $details->order_id = $order->id;
+            // $details->size = $content->options->size;
+            // $details->color = $content->options->color;
+            $details->save();
+        }
+        Cart::destroy();
+        return;
     }
 
     /**

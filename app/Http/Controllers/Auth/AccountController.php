@@ -19,22 +19,22 @@ class AccountController extends Controller
     {
     	$credentials = [
 		    'mobile'    => $request->mobile,
-		    'password' => '',
+		    'password' => '1^_!4651#',
 		];
+
 		Sentinel::authenticate($credentials);
 		$user = Sentinel::check();
 		$role = Sentinel::findRoleBySlug('customer');
 
-		dd($user);
-		if($role && !$user)
-		{
-
-			$user = Sentinel::registerAndActivate($request->all());
-        	$role->users()->attach($user);   	
-		} 
-
-
+		//$varified = sendVarificationCode();
 		
-		return redirect('/');
+		if(!$user && $role) //registration //$varified = sendVarificationCode();
+		{
+			$new_user = Sentinel::registerAndActivate($credentials);
+        	$role->users()->attach($new_user);  
+        	Sentinel::authenticate($credentials);		
+		}
+		
+		return redirect('checkout');
     }
 }

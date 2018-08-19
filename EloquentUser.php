@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Purchase;
 use App\Expense;
+use App\Models\Customer\ShippingAddress;
 
 class EloquentUser extends Model implements RoleableInterface, PermissibleInterface, PersistableInterface, UserInterface
 {
@@ -43,7 +44,6 @@ class EloquentUser extends Model implements RoleableInterface, PermissibleInterf
      * {@inheritDoc}
      */
     protected $fillable = [
-        'branch_id',
         'mobile',
         'name',
         'password',
@@ -129,6 +129,11 @@ class EloquentUser extends Model implements RoleableInterface, PermissibleInterf
     public function expenses()
     {
         return $this->hasMany(Expense::class, 'user_id');
+    }
+
+    public function shippingAddress()
+    {
+        return $this->hasOne(ShippingAddress::class, 'user_id');
     }
 
     //end Neher
